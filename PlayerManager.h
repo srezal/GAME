@@ -2,6 +2,9 @@
 #define GAME_PLAYERMANAGER_H
 
 
+#define MIN_BORDER 0
+#define MAX_BORDER 100
+
 #include <memory>
 #include "Vector.h"
 #include "Player.h"

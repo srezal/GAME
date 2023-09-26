@@ -2,6 +2,9 @@
 #define GAME_PLAYER_H
 
 
+#define MAX_HEALTH 2000
+#define MAX_SCORE 10000
+
 #include <cinttypes>
 #include <algorithm>
 
@@ -15,7 +18,7 @@ public:
     unsigned int getHealth() const;
     unsigned int getScore() const;
     void setHealth(int newHealth);
-    void setScore(unsigned int newScore);
+    void setScore(int newScore);
 };
 
 

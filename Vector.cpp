@@ -13,7 +13,7 @@ Vector Vector::operator+(const Vector &other) const {
 
 Vector::Vector(int x, int y, const std::pair<int, int> &restrictX, const std::pair<int, int> &restrictY) :
         Vector(
-                std::clamp(x, restrictX.first, restrictX.second),
+                std::clamp(x , restrictX.first, restrictX.second),
                 std::clamp(y, restrictY.first, restrictY.second)
         ) {
 }

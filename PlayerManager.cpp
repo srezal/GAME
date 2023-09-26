@@ -1,7 +1,7 @@
 #include "PlayerManager.h"
 
 PlayerManager::PlayerManager(Player& player, const Vector& coord) :
-        player(player), coord(coord) {
+        player(player), coord(Vector(coord.x, coord.y, {MIN_BORDER, MAX_BORDER},{MIN_BORDER, MAX_BORDER})) {
 }
 
 void PlayerManager::addHealth(int addition) {
@@ -37,5 +37,5 @@ void PlayerManager::changeCoord(Direction dir) {
             break;
     }
 
-    setCoord(Vector(newCoord.x, newCoord.y,{0, 100},{0, 100}));
+    setCoord(Vector(newCoord.x, newCoord.y,{MIN_BORDER, MAX_BORDER},{MIN_BORDER, MAX_BORDER}));
 }
