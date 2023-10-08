@@ -12,9 +12,7 @@ FieldCell::FieldCell(bool cross_active = true, EventInterface* event = nullptr):
 FieldCell::FieldCell(const FieldCell& other_field_cell): cross_active(1), event(nullptr){
     cross_active = other_field_cell.cross_active;
     if(other_field_cell.has_event() == true){
-        event = new EventInterface;
-        *event = other_field_cell.getEventInterface();
-        std::cout << event << "\n";
+        event = new EventInterface{other_field_cell.getEventInterface()};
     }
 }
 

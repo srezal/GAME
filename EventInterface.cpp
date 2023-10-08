@@ -13,9 +13,9 @@ EventInterface::EventInterface(const EventInterface& other_event_interface){
 
 EventInterface& EventInterface::operator = (const EventInterface& other_event_interface){
     // переопределение оператора присваивания для конструктора копирования
-    // EventInterface temp(other_event_interface);
-    // std::swap(some_data, temp.some_data);
-    // return *this;
+    EventInterface temp(other_event_interface);
+    std::swap(some_data, temp.some_data);
+    return *this;
 }
 
 

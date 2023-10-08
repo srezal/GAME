@@ -21,14 +21,17 @@ int main() {
     // player_manager.changeCoord(Direction::LEFT);
     // std::cout << player_manager.getCoord().x << " " << player_manager.getCoord().y << "\n";
     Field default_field = Field();
-    Field field = Field(MAX_BORDER, MAX_BORDER, Vector(0, 0), Vector(99, 99));
-    Field field_copy = field;
+    Field field = Field(6, 6, Vector(0, 0), Vector(99, 99));
+    EventInterface* event = new EventInterface{EventInterface(9)};
+    field.getCell(Vector(5, 5)).setEventInterface(event);
+    std::cout << field.getCell(Vector(5, 5)).getEventInterface().get_data() << "\n";
+    Field field_copy(field);
+    std::cout << field_copy.getCell(Vector(5, 5)).getEventInterface().get_data();
     std::cout << field_copy.getCell(Vector(5, 5)).getCross_active() << "\n";
     field_copy.getCell(Vector(5, 5)).setCross_active(0);
     std::cout << field_copy.getCell(Vector(5, 5)).getCross_active() << " <-- field_copy\n";
     std::cout << field.getCell(Vector(5, 5)).getCross_active() << " <-- field\n";
-    EventInterface* event = new EventInterface{EventInterface(9)};
-    field.getCell(Vector(5, 5)).setEventInterface(event);
-    std::cout << field.getCell(Vector(5, 5)).getEventInterface().get_data();
+    field.getCell(Vector(5, 5)).setEventInterface(nullptr);
+    std::cout << field_copy.getCell(Vector(5, 5)).getEventInterface().get_data();
     return 0;
 }

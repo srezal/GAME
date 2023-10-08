@@ -24,10 +24,7 @@ Field::Field(const Field& other_field){
     start_position = other_field.start_position;
     finish_position = other_field.finish_position;
     cells = new FieldCell[rows * cols];
-    // for(int i = 0; i < (rows * cols); i++){
-    //     cells[i] = other_field.cells[i];
-    // }
-    std::copy(cells, cells + (rows * cols), other_field.cells);
+    std::copy(other_field.cells, other_field.cells + (rows * cols), cells);
 }
 
 
