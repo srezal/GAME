@@ -24,14 +24,10 @@ Field::Field(const Field& other_field){
     start_position = other_field.start_position;
     finish_position = other_field.finish_position;
     cells = new FieldCell[rows * cols];
-    std::copy(other_field.cells, other_field.cells + (rows*cols), cells);
-    for(int i = 0; i < (rows * cols); i++){
-        if(other_field.cells[i].has_event()){
-            EventInterface* event_copy = new EventInterface;
-            *event_copy = other_field.cells[i].getEventInterface();
-            cells[i].setEventInterface(event_copy);
-        }
-    }
+    // for(int i = 0; i < (rows * cols); i++){
+    //     cells[i] = other_field.cells[i];
+    // }
+    std::copy(cells, cells + (rows * cols), other_field.cells);
 }
 
 

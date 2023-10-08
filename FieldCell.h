@@ -3,6 +3,7 @@
 
 
 #include "EventInterface.h"
+#include <algorithm>
 
 
 class FieldCell{
@@ -12,6 +13,10 @@ private:
 public:
     FieldCell();
     FieldCell(bool cross_active, EventInterface* event);
+    FieldCell(const FieldCell& other_field_cell);
+    FieldCell(FieldCell&& other_field_cell);
+    FieldCell& operator = (const FieldCell& other_field_cell);
+    FieldCell& operator = (FieldCell&& other_field_cell);
     void setCross_active(bool value);
     bool getCross_active() const;
     void setEventInterface(EventInterface* event);
