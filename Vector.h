@@ -9,6 +9,8 @@ struct Vector {
     int x;
     int y;
 
+    Vector() = default;
+
     Vector(int x, int y);
 
     Vector(int x, int y, const std::pair<int, int> &restrictX, const std::pair<int, int> &restrictY);
