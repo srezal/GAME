@@ -3,8 +3,8 @@
 
 
 Field::Field():
-    rows(0), cols(0), start_position(Vector(0, 0, {MIN_BORDER, cols - 1}, {MIN_BORDER, rows - 1})),
-    finish_position(Vector(0, 0, {MIN_BORDER, cols - 1}, {MIN_BORDER, rows - 1})), cells(nullptr){
+    rows(0), cols(0), start_position(Vector(0, 0)),
+    finish_position(Vector(0, 0)), cells(nullptr){
 
 }
 
@@ -64,7 +64,7 @@ FieldCell& Field::getCell(const Vector& position){
     if(cells != nullptr){
         return cells[position.y, position.x];
     }
-    // а если нет? 
+    std::cout << "Field is not initialized!";
 }
 
 
