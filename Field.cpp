@@ -2,10 +2,12 @@
 #include <iostream>
 
 
-Field::Field():
-    rows(0), cols(0), start_position(Vector(0, 0)),
-    finish_position(Vector(0, 0)), cells(nullptr){
-
+Field::Field(){
+    rows = DEFAULT_SIZE;
+    cols = DEFAULT_SIZE;
+    start_position = Vector(0, 0);
+    finish_position = Vector(DEFAULT_SIZE - 1, DEFAULT_SIZE - 1);
+    cells = new FieldCell[rows * cols];
 }
 
 
@@ -61,10 +63,7 @@ Field& Field::operator = (Field&& other_field){
 
 
 FieldCell& Field::getCell(const Vector& position){
-    if(cells != nullptr){
-        return cells[position.y, position.x];
-    }
-    std::cout << "Field is not initialized!";
+    return cells[position.y, position.x];
 }
 
 

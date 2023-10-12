@@ -4,6 +4,7 @@
 
 #define MIN_BORDER 0
 #define MAX_BORDER 100
+#define DEFAULT_SIZE 25
 
 
 #include "FieldCell.h"
