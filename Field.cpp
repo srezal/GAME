@@ -63,7 +63,7 @@ Field& Field::operator = (Field&& other_field){
 
 
 FieldCell& Field::getCell(const Vector& position){
-    return cells[position.y, position.x];
+    return cells[position.y * rows + position.x];
 }
 
 
