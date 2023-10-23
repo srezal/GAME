@@ -1,18 +1,18 @@
 #include "FieldCell.h"
-
 #include <iostream>
+#include <time.h>
 
 
 FieldCell::FieldCell(): cross_active(true), event(nullptr){}
 
 
-FieldCell::FieldCell(bool cross_active = true, EventInterface* event = nullptr): cross_active(cross_active), event(event){}
+FieldCell::FieldCell(bool cross_active = true, EventInterface* event = nullptr): cross_active(0), event(event){}
 
 
 FieldCell::FieldCell(const FieldCell& other_field_cell): cross_active(1), event(nullptr){
     cross_active = other_field_cell.cross_active;
     if(other_field_cell.has_event() == true){
-        event = new EventInterface{other_field_cell.getEventInterface()};
+        event = other_field_cell.getEventInterface().copy();
     }
 }
 

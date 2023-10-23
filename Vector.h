@@ -17,6 +17,10 @@ struct Vector {
 
     Vector operator+(const Vector &other) const;
 
+    bool operator==(const Vector& other) const;
+
+    bool operator<(const Vector& other) const;
+
     void operator+=(const Vector &other);
 };
 

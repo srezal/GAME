@@ -2,7 +2,7 @@
 
 
 PlayerManager::PlayerManager(Field& field, Player& player, const Vector& coord) :
-        field(field), player(player), coord(Vector(coord.x, coord.y, {MIN_BORDER, field.size().x - 1},{MIN_BORDER, field.size().y - 1})) {
+        field(field), player(player), coord(Vector(coord.x * 2 + 1, coord.y * 2 + 1, {MIN_BORDER, field.size().x - 1},{MIN_BORDER, field.size().y - 1})) {
 }
 
 void PlayerManager::addHealth(int addition) {
@@ -37,7 +37,14 @@ void PlayerManager::changeCoord(Direction dir) {
             newCoord += Vector{1, 0};
             break;
     }
-    if(field.getCell(newCoord).getCross_active() == true){ // если клетка проходима
-        setCoord(Vector(newCoord.x, newCoord.y,{MIN_BORDER, field.size().x - 1}, {MIN_BORDER, field.size().y - 1})); 
+    newCoord = Vector(newCoord.x, newCoord.y, {MIN_BORDER, field.size().x - 1}, {MIN_BORDER, field.size().y - 1});
+    FieldCell& candidate_cell = field.getCell(newCoord);
+    if(candidate_cell.getCross_active() == true){ // если клетка проходима
+        setCoord(newCoord);
+        if(candidate_cell.has_event() == true){
+            EventInterface& event = candidate_cell.getEventInterface();
+            event.action();
+            if(event.is_finite() == true) candidate_cell.setEventInterface(nullptr);
+        }
     }
 }

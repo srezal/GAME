@@ -11,6 +11,16 @@ Vector Vector::operator+(const Vector &other) const {
 }
 
 
+bool Vector::operator==(const Vector& other) const{
+    return (x == other.x) && (y == other.y);
+}
+
+
+bool Vector::operator<(const Vector& other) const{
+    return (x < other.x);
+}
+
+
 Vector::Vector(int x, int y, const std::pair<int, int> &restrictX, const std::pair<int, int> &restrictY) :
         Vector(
                 std::clamp(x, restrictX.first, restrictX.second),

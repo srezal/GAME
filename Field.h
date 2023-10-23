@@ -3,10 +3,11 @@
 
 
 #define MIN_BORDER 0
-#define MAX_BORDER 100
-#define DEFAULT_SIZE 25
+#define MAX_BORDER 41
+#define DEFAULT_SIZE 15
 
 
+#include <set>
 #include "FieldCell.h"
 #include "Vector.h"
 
@@ -28,6 +29,9 @@ public:
     FieldCell& getCell(const Vector& position);
     void setStart_position(const Vector& start_position);
     void setFinish_position(const Vector& finish_position);
+    bool RandomDecision();
+    Vector GetRandomCellFromSet(std::set<Vector>& cells);
+    void GenerateMaze(int seed);
     Vector size() const;
     Vector getStart_position() const;
     Vector getFinish_position() const;
