@@ -4,16 +4,14 @@
 #include "Printer.h"
 #include "KeyListener.h"
 #include "FieldCreator.h"
-#include "LevelInterface.h"
-#include "MazeLevel.h"
+#include "LevelType.h"
 
 
 int main() {
     Player player(100, 0);
     Field field;
     PlayerManager pm = PlayerManager(field, player, Vector(0, 0));
-    LevelInterface* level = new MazeLevel(pm, Vector(20, 20), 10, 10, 5);
-    field = FieldCreator().create(*level);
+    field = FieldCreator().create(LevelType::MAZE, Vector(10, 10));
     Printer printer(field, pm, player);
     printer.clean();
     printer.print();

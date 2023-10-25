@@ -2,21 +2,19 @@
 #define GAME_TRAPEVENT_H
 
 
-#include "EventInterface.h"
 #include "PlayerManager.h"
+#include "EventInterface.h"
+#include "EventVisitorInterface.h"
 
 
 class TrapEvent: public EventInterface{
 private:
     unsigned int damage_size;
-    PlayerManager& player_manager;
-    char icon;
 public:
-    TrapEvent(PlayerManager& player_manager, unsigned int damage_size);
+    TrapEvent(unsigned int damage_size);
     EventInterface* copy() override;
-    void action() override;
-    char getIcon() override;
-    bool is_finite() override;
+    void action(PlayerManager& player_manager) override;
+    void AcceptVisitor(EventVisitorInterface&) override;
     ~TrapEvent() override;
 };
 

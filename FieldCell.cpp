@@ -45,7 +45,7 @@ void FieldCell::setCross_active(bool value){
 }
 
 
-bool FieldCell::getCross_active() const{
+bool FieldCell::isCross_active() const{
     return cross_active;
 }
 

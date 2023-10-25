@@ -3,13 +3,12 @@
 
 
 #include "Field.h"
-#include "LevelInterface.h"
+#include "LevelType.h"
 
 
 class FieldCreator{
 public:
-    FieldCreator();
-    Field& create(LevelInterface& level);
+    Field& create(LevelType level_type, Vector);
 };
 
 

@@ -29,9 +29,7 @@ public:
     FieldCell& getCell(const Vector& position);
     void setStart_position(const Vector& start_position);
     void setFinish_position(const Vector& finish_position);
-    bool RandomDecision();
-    Vector GetRandomCellFromSet(std::set<Vector>& cells);
-    void GenerateMaze(int seed);
+    void setCellsCrossActiveFromMask(int* mask);
     Vector size() const;
     Vector getStart_position() const;
     Vector getFinish_position() const;

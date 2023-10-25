@@ -4,19 +4,17 @@
 
 #include "EventInterface.h"
 #include "PlayerManager.h"
+#include "EventVisitorInterface.h"
 
 
 class PickUpCoinEvent: public EventInterface{
 private:
     unsigned int coin_denomination;
-    PlayerManager& player_manager;
-    char icon;
 public:
-    PickUpCoinEvent(PlayerManager& player_manager, unsigned int coin_denomination);
+    PickUpCoinEvent(unsigned int coin_denomination);
     EventInterface* copy() override;
-    void action() override;
-    char getIcon() override;
-    bool is_finite() override;
+    void action(PlayerManager& player_manager) override;
+    void AcceptVisitor(EventVisitorInterface&) override;
     ~PickUpCoinEvent() override;
 };
 

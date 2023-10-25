@@ -14,6 +14,13 @@ private:
     Player& player;
 public:
     Printer(Field& field, PlayerManager& player_manager, Player& player);
+    void printTeleport();
+    void printTrap();
+    void printCoin();
+    void printWall();
+    void printPlayer();
+    void printPlayerStats();
+    void printEmptyCell();
     void print();
     void clean();
 };

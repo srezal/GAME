@@ -39,12 +39,11 @@ void PlayerManager::changeCoord(Direction dir) {
     }
     newCoord = Vector(newCoord.x, newCoord.y, {MIN_BORDER, field.size().x - 1}, {MIN_BORDER, field.size().y - 1});
     FieldCell& candidate_cell = field.getCell(newCoord);
-    if(candidate_cell.getCross_active() == true){ // если клетка проходима
+    if(candidate_cell.isCross_active()){ // если клетка проходима
         setCoord(newCoord);
-        if(candidate_cell.has_event() == true){
-            EventInterface& event = candidate_cell.getEventInterface();
-            event.action();
-            if(event.is_finite() == true) candidate_cell.setEventInterface(nullptr);
+        if(candidate_cell.has_event()){
+            candidate_cell.getEventInterface().action(*this);;
+            candidate_cell.setEventInterface(nullptr);
         }
     }
 }

@@ -1,29 +1,23 @@
 #include "TeleportEvent.h"
 
 
-TeleportEvent::TeleportEvent(PlayerManager& player_manager, Vector coords):
-    player_manager(player_manager), coords(coords), icon('?'){
-
+TeleportEvent::TeleportEvent(Vector coords):
+    coords(coords){
 }
 
 
 EventInterface* TeleportEvent::copy(){
-    return new TeleportEvent(player_manager, coords);
+    return new TeleportEvent(coords);
 }
 
 
-void TeleportEvent::action(){
+void TeleportEvent::action(PlayerManager& player_manager){
     player_manager.setCoord(coords);
 }
 
 
-bool TeleportEvent::is_finite(){
-    return false;
-}
-
-
-char TeleportEvent::getIcon(){
-    return icon;
+void TeleportEvent::AcceptVisitor(EventVisitorInterface& visitor){
+    visitor.visit(*this); // Superhard to understand single line of code 
 }
 
 

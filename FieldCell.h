@@ -18,7 +18,7 @@ public:
     FieldCell& operator = (const FieldCell& other_field_cell);
     FieldCell& operator = (FieldCell&& other_field_cell);
     void setCross_active(bool value);
-    bool getCross_active() const;
+    bool isCross_active() const;
     void setEventInterface(EventInterface* event);
     EventInterface& getEventInterface() const;
     bool has_event() const;
