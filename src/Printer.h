@@ -21,6 +21,11 @@ public:
     void printPlayer();
     void printPlayerStats();
     void printEmptyCell();
+    void printDarkness();
+    void printKey();
+    void printExit();
+    void printEye();
+    void printBlindnessPill();
     void print();
     void clean();
 };

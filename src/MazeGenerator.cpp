@@ -1,4 +1,5 @@
 #include "MazeGenerator.h"
+#include <iostream>
 
 
 MazeGenerator::MazeGenerator(unsigned int width_, unsigned int height_):
@@ -35,6 +36,7 @@ void MazeGenerator::GenerateSidewinder(int seed){
     std::set<Vector> maze_cells;
     int cols = width - 1;
     int rows = height - 1;
+    std::cout << cols << rows;
     int current_row = 3;
     int current_col = 1;
     Vector current_cell;

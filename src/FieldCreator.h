@@ -8,6 +8,8 @@
 
 class FieldCreator{
 public:
+    Vector GenerateExitCoords(Field& field);
+    FieldCell& FindEmptyCell(Field& field);
     Field& create(LevelType level_type, Vector);
 };
 

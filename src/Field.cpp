@@ -12,7 +12,7 @@ Field::Field(){
 }
 
 
-Field::Field(unsigned int height, unsigned int width, const Vector& start_position, const Vector& finish_position){
+Field::Field(unsigned int width, unsigned int height, const Vector& start_position, const Vector& finish_position){
     this->rows = std::clamp((int)(height * 2 + 1), MIN_BORDER, MAX_BORDER);
     this->cols = std::clamp((int)(width * 2 + 1), MIN_BORDER, MAX_BORDER);
     this->start_position = Vector(start_position.x * 2 + 1, start_position.y * 2 + 1, {MIN_BORDER, this->cols - 1}, {MIN_BORDER, this->rows - 1});

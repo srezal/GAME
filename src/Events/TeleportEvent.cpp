@@ -1,18 +1,16 @@
 #include "TeleportEvent.h"
 
 
-TeleportEvent::TeleportEvent(Vector coords):
-    coords(coords){
-}
+TeleportEvent::TeleportEvent(){}
 
 
 EventInterface* TeleportEvent::copy(){
-    return new TeleportEvent(coords);
+    return new TeleportEvent();
 }
 
 
 void TeleportEvent::action(PlayerManager& player_manager){
-    player_manager.setCoord(coords);
+    player_manager.tpPlayerToStartPosition();
 }
 
 

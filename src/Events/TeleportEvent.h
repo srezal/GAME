@@ -2,17 +2,15 @@
 #define GAME_TELEPORTEVENT_H
 
 
-#include "PlayerManager.h"
-#include "Vector.h"
+#include "../PlayerManager.h"
+#include "../Vector.h"
 #include "EventInterface.h"
-#include "EventVisitorInterface.h"
+#include "../EventVisitorInterface.h"
 
 
 class TeleportEvent: public EventInterface{
-private:
-    Vector coords;
 public:
-    TeleportEvent(Vector coords);
+    TeleportEvent();
     EventInterface* copy() override;
     void action(PlayerManager& player_manager) override;
     void AcceptVisitor(EventVisitorInterface&) override;

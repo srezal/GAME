@@ -14,6 +14,9 @@ public:
     void visit(TeleportEvent) override;
     void visit(TrapEvent) override;
     void visit(PickUpCoinEvent) override;
+    void visit(PickUpKeyEvent)override;
+    void visit(ShowExitEvent)override;
+    void visit(BlindnessEvent)override;
 };
 
 

@@ -3,14 +3,12 @@
 #include <time.h>
 
 
-FieldCell::FieldCell(): cross_active(true), event(nullptr){}
-
-
-FieldCell::FieldCell(bool cross_active = true, EventInterface* event = nullptr): cross_active(0), event(event){}
+FieldCell::FieldCell(bool cross_active, bool visible, EventInterface* event): cross_active(cross_active), visible(visible), event(event){}
 
 
 FieldCell::FieldCell(const FieldCell& other_field_cell): cross_active(1), event(nullptr){
     cross_active = other_field_cell.cross_active;
+    visible = other_field_cell.visible;
     if(other_field_cell.has_event() == true){
         event = other_field_cell.getEventInterface().copy();
     }
@@ -20,6 +18,7 @@ FieldCell::FieldCell(const FieldCell& other_field_cell): cross_active(1), event(
 FieldCell& FieldCell::operator=(const FieldCell& other_field_cell){
     FieldCell temp(other_field_cell);
     std::swap(cross_active,  temp.cross_active);
+    std::swap(visible, temp.visible);
     std::swap(event, temp.event);
     return *this;
 }
@@ -27,6 +26,7 @@ FieldCell& FieldCell::operator=(const FieldCell& other_field_cell){
 
 FieldCell::FieldCell(FieldCell&& other_field_cell){
     std::swap(cross_active, other_field_cell.cross_active);
+    std::swap(visible, other_field_cell.visible);
     std::swap(event, other_field_cell.event);
 }
 
@@ -34,6 +34,7 @@ FieldCell::FieldCell(FieldCell&& other_field_cell){
 FieldCell& FieldCell::operator=(FieldCell&& other_field_cell){
     if(this != &other_field_cell){
         std::swap(cross_active, other_field_cell.cross_active);
+        std::swap(visible, other_field_cell.visible);
         std::swap(event, other_field_cell.event);
     }
     return *this;
@@ -47,6 +48,16 @@ void FieldCell::setCross_active(bool value){
 
 bool FieldCell::isCross_active() const{
     return cross_active;
+}
+
+
+bool FieldCell::isVisible() const{
+    return visible;
+}
+
+
+void FieldCell::setVisible(bool value){
+    visible = value;
 }
 
 

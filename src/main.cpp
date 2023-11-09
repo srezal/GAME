@@ -5,35 +5,37 @@
 #include "KeyListener.h"
 #include "FieldCreator.h"
 #include "LevelType.h"
+#include "LightController.h"
 
 
 int main() {
-    Player player(100, 0);
-    Field field;
+    Player player(100, 0, 4);
+    Field field = FieldCreator().create(LevelType::MAZE, Vector(15, 15));
     PlayerManager pm = PlayerManager(field, player, Vector(0, 0));
-    field = FieldCreator().create(LevelType::MAZE, Vector(10, 10));
     Printer printer(field, pm, player);
     printer.clean();
     printer.print();
     KeyListener key_listener = KeyListener();
     while(true){
         char KEY = key_listener.listen();
+        Direction dir;
         switch(KEY){
             case 'w':
-                pm.changeCoord(Direction::TOP);
+                dir = Direction::TOP;
                 break;
             case 's':
-                pm.changeCoord(Direction::DOWN);
+                dir = Direction::DOWN;
                 break;
             case 'd':
-                pm.changeCoord(Direction::RIGHT);
+                dir = Direction::RIGHT;
                 break;
             case 'a':
-                pm.changeCoord(Direction::LEFT);
+                dir = Direction::LEFT;
                 break;
             case '.':
                 exit(0);
         };
+        pm.changeCoord(dir);
         printer.clean();
         printer.print();
     }

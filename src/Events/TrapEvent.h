@@ -2,9 +2,9 @@
 #define GAME_TRAPEVENT_H
 
 
-#include "PlayerManager.h"
+#include "../PlayerManager.h"
 #include "EventInterface.h"
-#include "EventVisitorInterface.h"
+#include "../EventVisitorInterface.h"
 
 
 class TrapEvent: public EventInterface{

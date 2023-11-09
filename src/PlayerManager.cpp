@@ -2,7 +2,10 @@
 
 
 PlayerManager::PlayerManager(Field& field, Player& player, const Vector& coord) :
-        field(field), player(player), coord(Vector(coord.x * 2 + 1, coord.y * 2 + 1, {MIN_BORDER, field.size().x - 1},{MIN_BORDER, field.size().y - 1})) {
+        field(field),
+        player(player),
+        coord(Vector(coord.x * 2 + 1, coord.y * 2 + 1, {MIN_BORDER, field.size().x - 1},{MIN_BORDER, field.size().y - 1})),
+        light_controller(LightController()) {
 }
 
 void PlayerManager::addHealth(int addition) {
@@ -18,7 +21,25 @@ const Vector& PlayerManager::getCoord() {
 }
 
 void PlayerManager::setCoord(const Vector& newCoord) {
+    light_controller.removeLight(field, getCoord(), player.getVision_distane());
     coord = newCoord;
+    light_controller.setLight(field, coord, player.getVision_distane());
+}
+
+void PlayerManager::tpPlayerToStartPosition(){
+    PlayerManager::setCoord(field.getStart_position());
+}
+
+void PlayerManager::setHas_key(bool value){
+    player.setHas_key(value);
+}
+
+void PlayerManager::setKnow_where_is_exit(bool value){
+    player.setKnow_where_is_exit(value);
+}
+
+void PlayerManager::DecreaseVision(unsigned int k){
+    player.setVision_distance(player.getVision_distane() / 2);
 }
 
 void PlayerManager::changeCoord(Direction dir) {
@@ -44,6 +65,11 @@ void PlayerManager::changeCoord(Direction dir) {
         if(candidate_cell.has_event()){
             candidate_cell.getEventInterface().action(*this);;
             candidate_cell.setEventInterface(nullptr);
+        }
+    }
+    else if(newCoord == field.getFinish_position()){
+        if(player.Has_key()){
+            exit(0);
         }
     }
 }

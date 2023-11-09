@@ -31,9 +31,16 @@ void Printer::printPlayer(){
 }
 
 
+void Printer::printKey(){
+    std::cout << "k ";
+}
+
+
 void Printer::printPlayerStats(){
     std::cout << "Health: " << player.getHealth() << "\n";
     std::cout << "Score: " << player.getScore() << "\n";
+    std::cout << "Key: " << player.Has_key() << "\n";
+    std::cout << "Vision distance: " << player.getVision_distane() << "\n";
 }
 
 
@@ -42,6 +49,23 @@ void Printer::printEmptyCell(){
 }
 
 
+void Printer::printDarkness(){
+    std::cout << "= ";
+}
+
+
+void Printer::printExit(){
+    std::cout << "E ";
+}
+
+void Printer::printEye(){
+    std::cout << "0 ";
+}
+
+void Printer::printBlindnessPill(){
+    std::cout << "p ";
+}
+
 void Printer::print(){
     Printer::printPlayerStats();
     PrintToConsoleVisitor visitor = PrintToConsoleVisitor(*this);
@@ -49,6 +73,13 @@ void Printer::print(){
         for(int j = 0; j < field.size().x; j++){
             Vector current_cell_coords = Vector(j, i);
             if(player_manager.getCoord() == current_cell_coords) Printer::printPlayer();
+            else if(!field.getCell(current_cell_coords).isVisible()){
+                if(current_cell_coords == field.getFinish_position() && player.isKnow_where_is_exit()){
+                    Printer::printExit();
+                }
+                else Printer::printDarkness();
+            }
+            else if(current_cell_coords == field.getFinish_position()) Printer::printExit();
             else if(!field.getCell(current_cell_coords).isCross_active()){
                 Printer::printWall();
             }
