@@ -5,7 +5,8 @@ PlayerManager::PlayerManager(Field& field, Player& player, const Vector& coord) 
         field(field),
         player(player),
         coord(Vector(coord.x * 2 + 1, coord.y * 2 + 1, {MIN_BORDER, field.size().x - 1},{MIN_BORDER, field.size().y - 1})),
-        light_controller(LightController()) {
+        light_controller(LightController()),
+        win(false) {
 }
 
 void PlayerManager::addHealth(int addition) {
@@ -38,6 +39,17 @@ void PlayerManager::setKnow_where_is_exit(bool value){
     player.setKnow_where_is_exit(value);
 }
 
+
+bool PlayerManager::isWin() const{
+    return win;
+}
+
+
+unsigned int PlayerManager::getHealth() const{
+    return player.getHealth();
+}
+
+
 void PlayerManager::DecreaseVision(unsigned int k){
     player.setVision_distance(player.getVision_distane() / 2);
 }
@@ -45,7 +57,7 @@ void PlayerManager::DecreaseVision(unsigned int k){
 void PlayerManager::changeCoord(Direction dir) {
     Vector newCoord = getCoord();
     switch (dir) {
-        case Direction::TOP:
+        case Direction::UP:
             newCoord += Vector{0, -1};
             break;
         case Direction::DOWN:
@@ -69,7 +81,7 @@ void PlayerManager::changeCoord(Direction dir) {
     }
     else if(newCoord == field.getFinish_position()){
         if(player.Has_key()){
-            exit(0);
+            win = true;
         }
     }
 }

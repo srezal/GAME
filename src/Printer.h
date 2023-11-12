@@ -14,6 +14,7 @@ private:
     Player& player;
 public:
     Printer(Field& field, PlayerManager& player_manager, Player& player);
+    void printMsg(std::string);
     void printTeleport();
     void printTrap();
     void printCoin();

@@ -8,6 +8,7 @@
 #include "Direction.h"
 #include "Field.h"
 #include "LightController.h"
+#include "GameStatus.h"
 
 
 class PlayerManager {
@@ -16,6 +17,7 @@ private:
     Field& field;
     Vector coord;
     LightController light_controller;
+    bool win;
 public:
     PlayerManager(Field& field, Player& player, const Vector& coord);
     void addHealth(int addition);
@@ -26,6 +28,8 @@ public:
     void setHas_key(bool has_key);
     void setKnow_where_is_exit(bool value);
     void DecreaseVision(unsigned int value);
+    bool isWin() const;
+    unsigned int getHealth() const;
     const Vector& getCoord();
 };
 

@@ -6,6 +6,11 @@
 Printer::Printer(Field& field, PlayerManager& player_manager, Player& player): field(field), player_manager(player_manager), player(player){};
 
 
+void Printer::printMsg(std::string str){
+    std::cout << str << "\n";
+}
+
+
 void Printer::printTeleport(){
     std::cout << "? ";
 }

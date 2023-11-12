@@ -2,7 +2,7 @@
 #define GAME_DIRECTION_H
 
 enum class Direction{
-    TOP,
+    UP,
     DOWN,
     LEFT,
     RIGHT

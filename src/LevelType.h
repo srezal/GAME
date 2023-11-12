@@ -2,7 +2,9 @@
 #define GAME_LEVELTYPE_H
 
 enum class LevelType{
-    MAZE
+    MAZE,
+    ARENA,
+    NULL_LEVEL
 };
 
 #endif //GAME_LEVELTYPE_H
