@@ -2,10 +2,10 @@
 #define GAME_TELEPORTEVENT_H
 
 
-#include "../PlayerManager.h"
-#include "../Vector.h"
+#include "../Characters/PlayerManager.h"
+#include "../Utils/Vector.h"
 #include "EventInterface.h"
-#include "../EventVisitorInterface.h"
+#include "EventVisitorInterface.h"
 
 
 class TeleportEvent: public EventInterface{

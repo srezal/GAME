@@ -3,8 +3,8 @@
 
 
 #include "EventInterface.h"
-#include "../PlayerManager.h"
-#include "../EventVisitorInterface.h"
+#include "../Characters/PlayerManager.h"
+#include "EventVisitorInterface.h"
 
 
 class PickUpKeyEvent: public EventInterface{
