@@ -39,3 +39,14 @@ void LightController::removeLight(Field& field, Vector player_coords, int distan
         }
     }  
 }
+
+
+void LightController::setPitchDarkness(Field& field){
+    unsigned int width = field.size().x;
+    unsigned int height = field.size().y;
+    for(int i = 0; i < height; i++){
+        for(int j = 0; j < width; j++){
+            field.getCell(Vector(j, i)).setVisible(0);
+        }
+    }
+} 

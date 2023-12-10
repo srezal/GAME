@@ -17,7 +17,7 @@ void CommandManager::SetDefaultKeyBindings(Config& conf){
     conf.COMMANDS_KEYS.clear();
     conf.COMMANDS_KEYS['w'] = CommandsEnum::GO_UP;   // 
     conf.COMMANDS_KEYS['a'] = CommandsEnum::GO_LEFT; // 
-    conf.COMMANDS_KEYS['s'] = CommandsEnum::GO_DOWN; // ---- default keyboards binds
+    conf.COMMANDS_KEYS['s'] = CommandsEnum::GO_DOWN; // ---- default keys binds
     conf.COMMANDS_KEYS['d'] = CommandsEnum::GO_RIGHT;//
     conf.COMMANDS_KEYS['.'] = CommandsEnum::EXIT;    //
 }

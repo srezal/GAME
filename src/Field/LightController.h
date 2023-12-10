@@ -11,6 +11,7 @@ class LightController{
 public:
     void fillLight(Field& field, Vector player_coords, int distance);
     void setLight(Field& field, Vector player_coords, int distance);
+    void setPitchDarkness(Field& field);
     void removeLight(Field& field, Vector player_coords, int distance);
 };
 

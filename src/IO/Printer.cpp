@@ -3,7 +3,9 @@
 #include "../Events/PrintToConsoleVisitor.h"
 
 
-Printer::Printer(Field& field, PlayerManager& player_manager, Player& player): field(field), player_manager(player_manager), player(player){};
+Printer::Printer(Field& field, PlayerManager& player_manager, Player& player): field(field), player_manager(player_manager), player(player){
+    std::setlocale(LC_ALL,"en_US.UTF-8");
+};
 
 
 void Printer::printTeleport(){
@@ -22,25 +24,17 @@ void Printer::printCoin(){
 
 
 void Printer::printWall(){
-    std::cout << "* ";
+    std::cout << "■ ";
 }
 
 
 void Printer::printPlayer(){
-    std::cout << "ъ ";
+    std::cout << "🌶 ";
 }
 
 
 void Printer::printKey(){
     std::cout << "k ";
-}
-
-
-void Printer::printPlayerStats(){
-    std::cout << "Health: " << player.getHealth() << "\n";
-    std::cout << "Score: " << player.getScore() << "\n";
-    std::cout << "Key: " << player.Has_key() << "\n";
-    std::cout << "Vision distance: " << player.getVision_distane() << "\n";
 }
 
 
@@ -50,21 +44,30 @@ void Printer::printEmptyCell(){
 
 
 void Printer::printDarkness(){
-    std::cout << "# ";
+    std::cout << "░ ";
 }
 
 
 void Printer::printExit(){
-    std::cout << "E ";
+    std::cout << "⚐ ";
 }
 
 void Printer::printEye(){
-    std::cout << "0 ";
+    std::cout << "⦾ ";
 }
 
 void Printer::printBlindnessPill(){
     std::cout << "p ";
 }
+
+
+void Printer::printPlayerStats(){
+    std::cout << "Health: " << player.getHealth() << "\n";
+    //std::cout << "Score: " << player.getScore() << "\n";
+    std::cout << "Key: " << player.Has_key() << "\n";
+    std::cout << "Vision distance: " << player.getVision_distane() << "\n";
+}
+
 
 void Printer::print(){
     clean();

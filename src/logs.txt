@@ -1,29 +1,52 @@
 Start a new game. Field size and players start position: 11x11 (1 1)
 Key pressed and command run: d go_right
 Key pressed and command run: d go_right
+Key pressed and command run: d go_right
+Key pressed and command run: d go_right
+Key pressed and command run: d go_right
+Key pressed and command run: d go_right
+Key pressed and command run: d go_right
+Key pressed and command run: d go_right
+Key pressed and command run: d go_right
+Key pressed and command run: s go_down
+Key pressed and command run: s go_down
 Key pressed and command run: s go_down
 Key pressed and command run: s go_down
 Key pressed and command run: d go_right
 Key pressed and command run: d go_right
-Key pressed: l
-Key pressed: k
-Key pressed: n
-Key pressed: n
-Key pressed: b
-Key pressed: h
-Key pressed: h
-Key pressed: h
-Key pressed: j
-Key pressed: k
-Key pressed: j
-Key pressed: h
-Key pressed: h
+Key pressed and command run: s go_down
+Key pressed and command run: a go_left
+Key pressed and command run: a go_left
+Key pressed and command run: a go_left
+Key pressed and command run: a go_left
+Key pressed and command run: s go_down
+Key pressed and command run: s go_down
+Key pressed and command run: s go_down
+Key pressed and command run: d go_right
+Key pressed and command run: w go_up
 Key pressed and command run: d go_right
 Key pressed and command run: d go_right
+Key pressed and command run: d go_right
+Key pressed and command run: s go_down
+Key pressed and command run: s go_down
+Key pressed and command run: w go_up
+Key pressed and command run: w go_up
+Key pressed and command run: a go_left
+Key pressed and command run: a go_left
+Key pressed and command run: w go_up
+Key pressed and command run: w go_up
+Key pressed and command run: d go_right
+Key pressed and command run: d go_right
+Key pressed and command run: w go_up
+Key pressed and command run: w go_up
+Key pressed and command run: a go_left
+Key pressed and command run: a go_left
+Key pressed and command run: w go_up
+Key pressed and command run: d go_right
+Key pressed and command run: w go_up
+Key pressed and command run: w go_up
 Key pressed and command run: d go_right
 Key pressed and command run: s go_down
 Key pressed and command run: s go_down
 Key pressed and command run: a go_left
-Key pressed and command run: w go_up
-Key pressed and command run: w go_up
 Key pressed and command run: . exit

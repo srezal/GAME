@@ -22,12 +22,14 @@ const Vector& PlayerManager::getCoord() {
 }
 
 void PlayerManager::setCoord(const Vector& newCoord) {
-    if(field.getIs_night())light_controller.setLight(field, coord, player.getVision_distane());
     coord = newCoord;
+    if(field.getIs_night())light_controller.setLight(field, coord, player.getVision_distane());
 }
 
 void PlayerManager::tpPlayerToStartPosition(){
+    if(field.getIs_night())light_controller.setPitchDarkness(field);
     PlayerManager::setCoord(field.getStart_position());
+    //if(field.getIs_night())light_controller.setLight(field, coord, player.getVision_distane());
 }
 
 void PlayerManager::setHas_key(bool value){
@@ -50,7 +52,9 @@ unsigned int PlayerManager::getHealth() const{
 
 
 void PlayerManager::DecreaseVision(unsigned int k){
+    if(field.getIs_night())light_controller.setPitchDarkness(field);
     player.setVision_distance(player.getVision_distane() / 2);
+    if(field.getIs_night())light_controller.setLight(field, coord, player.getVision_distane());
 }
 
 void PlayerManager::changeCoord(Direction dir) {

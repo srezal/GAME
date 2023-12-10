@@ -58,6 +58,12 @@ void MazeGenerator::GenerateSidewinder(int seed){
             maze_cells.erase(maze_cells.begin(), maze_cells.end());
         }
     }
+    for(int i = 0; i < height; i++){
+        for(int j = 0; j < width; j++){
+            std::cout << maze_mask[i * width + j] << " ";
+        }
+        std::cout << "\n";
+    }
 }
 
 
