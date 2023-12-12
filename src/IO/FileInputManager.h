@@ -2,9 +2,8 @@
 #define GAME_FILEINPUTMANAGER_H
 
 
+#include <fstream>
 #include "InputManagerInterface.h"
-#include "../IO/FileOpenModes.h"
-#include "../IO/FileManager.h"
 #include "../Utils/StringParser.h"
 
 
@@ -13,7 +12,7 @@
 
 class FileInputManager: public InputManagerInterface{
 private:
-    FileManager file_manager;
+    std::ifstream input;
 public:
     FileInputManager();
     char GetChar() override;

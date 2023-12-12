@@ -8,12 +8,8 @@ KeyPressedAndCommandRunMessage::KeyPressedAndCommandRunMessage(const char key, s
 }
 
 
-std::ostream& KeyPressedAndCommandRunMessage::to_stream(std::ostream& stream){
-    stream << key << " " << command;
-    return stream;
-}
-
-
-std::string KeyPressedAndCommandRunMessage::AcceptVisitor(MessageVisitor& visitor){
-    return visitor.visit(*this);
+std::string KeyPressedAndCommandRunMessage::getStringMessage(){
+    return std::format("Key {} pressed and command {} run",
+                    key,
+                    command);
 }

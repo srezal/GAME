@@ -2,9 +2,9 @@
 #define GAME_KEYPRESSEDMESSAGE_H
 
 #include "MessageInterface.h"
-#include "MessageVisitor.h"
 #include "../Utils/Vector.h"
 #include <string>
+#include <format>
 
 
 class KeyPressedMessage: public MessageInterface{
@@ -12,8 +12,7 @@ private:
     char key;
 public:
     KeyPressedMessage(const char);
-    std::ostream& to_stream(std::ostream&) override;
-    std::string AcceptVisitor(MessageVisitor&) override;
+    std::string getStringMessage() override;
 };
 
 

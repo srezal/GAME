@@ -32,7 +32,7 @@ void Game::StartGame(){
     ActionManager action_manager = ActionManager(conf, pm, field, player);
     GameState game_state = GameState::PLAYING;
     GameStartMessage start_msg = GameStartMessage(field.size(), pm.getCoord());
-    conf.logger.MakeLog(&start_msg);
+    conf.loggers_manager.MakeLog(start_msg);
     while(game_state == GameState::PLAYING){
         game_state = action_manager.GameIteration();
     }

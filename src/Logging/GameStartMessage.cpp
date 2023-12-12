@@ -1,3 +1,4 @@
+#include <format>
 #include "GameStartMessage.h"
 
 
@@ -7,12 +8,10 @@ GameStartMessage::GameStartMessage(const Vector field_size, const Vector start_p
 }
 
 
-std::ostream& GameStartMessage::to_stream(std::ostream& stream){
-    stream << field_size.x << "x" << field_size.y << " (" << start_position.x << " " << start_position.y << ")";
-    return stream;
-}
-
-
-std::string GameStartMessage::AcceptVisitor(MessageVisitor& visitor){
-    return visitor.visit(*this);
+std::string GameStartMessage::getStringMessage(){
+    return std::format("Start a new game. Field size is {}x{} and players start position is ({}, {})",
+                        field_size.x,
+                        field_size.y, 
+                        start_position.x, 
+                        start_position.y);
 }

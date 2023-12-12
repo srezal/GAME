@@ -2,22 +2,23 @@
 
 
 FileInputManager::FileInputManager(){
-    file_manager.Open(CONTROL_TXT_PATH, FileOpenModes::READ);
+    input.open(CONTROL_TXT_PATH);
 }
 
 
 char FileInputManager::GetChar(){
-    return file_manager.ReadChar();
+    char input_ch;
+    input >> input_ch;
+    return input_ch;
 }
 
 
 std::string FileInputManager::GetString(){
     std::string str;
-    file_manager.ReadString(str);
+    std::getline(input, str);
     return str;
 }
 
 
 FileInputManager::~FileInputManager(){
-
 }

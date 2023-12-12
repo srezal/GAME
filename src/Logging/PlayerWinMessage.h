@@ -2,8 +2,8 @@
 #define GAME_PLAYERWINMESSAGE_H
 
 #include "MessageInterface.h"
-#include "MessageVisitor.h"
 #include <string>
+#include <format>
 
 
 class PlayerWinMessage: public MessageInterface{
@@ -11,8 +11,7 @@ private:
     const unsigned int playerHp;
 public:
     PlayerWinMessage(const unsigned int);
-    std::ostream& to_stream(std::ostream&) override;
-    std::string AcceptVisitor(MessageVisitor&) override;
+    std::string getStringMessage() override;
 };
 
 

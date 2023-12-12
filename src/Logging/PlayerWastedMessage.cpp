@@ -6,12 +6,8 @@ PlayerWastedMessage::PlayerWastedMessage(const Vector last_cell_position): last_
 }
 
 
-std::ostream& PlayerWastedMessage::to_stream(std::ostream& stream){
-    stream << "(" << last_cell_position.x << " " << last_cell_position.y << ")";
-    return stream;
-}
-
-
-std::string PlayerWastedMessage::AcceptVisitor(MessageVisitor& visitor){
-    return visitor.visit(*this);
+std::string PlayerWastedMessage::getStringMessage(){
+    return std::format("Player wasted on cell ({}, {})",
+                    last_cell_position.x,
+                    last_cell_position.y);
 }

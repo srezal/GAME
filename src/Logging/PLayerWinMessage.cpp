@@ -6,12 +6,6 @@ PlayerWinMessage::PlayerWinMessage(const unsigned int playerHp): playerHp(player
 }
 
 
-std::ostream& PlayerWinMessage::to_stream(std::ostream& stream){
-    stream << playerHp;
-    return stream;
-}
-
-
-std::string PlayerWinMessage::AcceptVisitor(MessageVisitor& visitor){
-    return visitor.visit(*this);
+std::string PlayerWinMessage::getStringMessage(){
+    return std::format("Player win with hp {}.", playerHp);
 }

@@ -2,10 +2,10 @@
 #include "../IO/TerminalInputManager.h"
 #include "../IO/FileInputManager.h"
 #include "../IO/TerminalOutputManager.h"
-#include "../IO/FileOpenModes.h"
-#include "../IO/FileManager.h"
 #include "../Utils/StringParser.h"
 #include "../Game/CommandManager.h"
+#include "../Logging/FileLogger.h"
+#include "../Logging/TerminalLogger.h"
 
 
 #include <iostream>
@@ -23,8 +23,8 @@ Config::Config(){
     SetLevelType();
     SetInputManager();
     ReadControlSettingsFromFile();
-    SetLoggerTerminalOutput();
-    SetLoggerFileOutput();
+    SetTerminalLogger();
+    SetFileLogger();
 }
 
 
@@ -68,35 +68,32 @@ void Config::SetInputManager(){
 void Config::SetOutputManager(){}
 
 
-void Config::SetLoggerTerminalOutput(){
+void Config::SetTerminalLogger(){
     OUTPUT_MANAGER_PTR->sendMsg("Logs in Terminal 1(Yes), any other key(No): ");
     char input_char = INPUT_MANAGER_PTR->GetChar();
-    if(input_char == '1') logger.AddOstream(&std::cout);
+    if(input_char == '1') loggers_manager.AddLogger(new TerminalLogger());
 }
 
 
-void Config::SetLoggerFileOutput(){
+void Config::SetFileLogger(){
     OUTPUT_MANAGER_PTR->sendMsg("Logs in File 1(Yes), any other key(No): ");
     char input_char = INPUT_MANAGER_PTR->GetChar();
-    if(input_char == '1'){
-        file_manager.Open(LOGS_TXT_PATH, FileOpenModes::WRITE);
-        logger.AddOstream(file_manager.GetOutputStream());
-    }
+    if(input_char == '1')loggers_manager.AddLogger(new FileLogger());
 }
 
 
 void Config::ReadControlSettingsFromFile(){
     CommandManager comm_manager = CommandManager();
-    FileManager file_manager = FileManager();
+    std::ifstream settings_file;
+    settings_file.open(SETTING_TXT_PATH);
     StringParser string_parser = StringParser();
-    file_manager.Open(SETTING_TXT_PATH, FileOpenModes::READ);
     std::string str;
     std::vector<std::string> splitted_string;
-    while(file_manager.ReadString(str)){
+    while(!settings_file.eof()){
+        std::getline(settings_file, str);
         splitted_string = string_parser.SplitString(str, " ");
         comm_manager.SetCommandFromSplittedString(*this, splitted_string);
     }
-    file_manager.Close();
     comm_manager.CheckCommandsKeys(*this);
 }
 
@@ -104,5 +101,4 @@ void Config::ReadControlSettingsFromFile(){
 Config::~Config(){
     delete INPUT_MANAGER_PTR;
     delete OUTPUT_MANAGER_PTR;
-    file_manager.Close();
 }

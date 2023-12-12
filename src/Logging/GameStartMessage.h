@@ -2,7 +2,6 @@
 #define GAME_GAMESTARTMESSAGE_H
 
 #include "MessageInterface.h"
-#include "MessageVisitor.h"
 #include "../Utils/Vector.h"
 #include <string>
 
@@ -13,8 +12,7 @@ private:
     const Vector start_position;
 public:
     GameStartMessage(const Vector, const Vector);
-    std::ostream& to_stream(std::ostream&) override;
-    std::string AcceptVisitor(MessageVisitor&) override;
+    std::string getStringMessage() override;
 };
 
 
